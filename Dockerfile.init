@@ -1,0 +1,5 @@
+FROM alpine
+
+ADD init/* /init/
+ADD gout/gout /
+CMD ["/gout", "docker cp init:/init/. $HOME"] 
