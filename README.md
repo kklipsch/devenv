@@ -1,4 +1,4 @@
-#devenv - build development environments using only docker
+# devenv - build development environments using only docker
 
 To initialize a host machine to use dev environments:
 
