@@ -29,4 +29,4 @@ On a personal machine, setup a new Standard User for development.
 - change scroll behavior
 - clean up the dock
 - setup 1password / chrome extension
-- set item2 Default profile 'send text at start' to be "gpgconf --kill gpg-agent && gpg-agent --enable-ssh-support --daemon /bin/bash"
+- set iterm2 Default profile 'send text at start' to be "gpgconf --kill gpg-agent && gpg-agent --enable-ssh-support --daemon /bin/bash"
