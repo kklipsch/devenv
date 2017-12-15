@@ -5,7 +5,7 @@ ENV HOME /home/$USER
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
-RUN apt-get -y install apt-utils sudo locales
+RUN apt-get -y install apt-utils sudo locales vim git less curl wget
 
 RUN \
     dpkg-reconfigure -f noninteractive tzdata && \
@@ -19,9 +19,17 @@ ENV LANG=en_US.UTF-8
 ADD scripts/* /usr/local/bin/
 
 RUN user.sh "$USER" "$HOME"
-RUN vim.sh
 
 WORKDIR $HOME
 USER $USER
+
+#variable expansion not supported yet
+ADD bash/* $HOME/
+ADD vim/* $HOME/.vim/
+
+RUN cp $HOME/.vim/base.init $HOME/.vimrc
+
+RUN git.sh
+RUN vim.sh
 
 ENTRYPOINT ["/bin/bash"]

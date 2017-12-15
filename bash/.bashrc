@@ -36,7 +36,3 @@ set -o vi
 #
 # Add a home bin to the path
 PATH=$HOME/bin:$PATH
-
-devenv() { 
-	docker run -ti -v ${PWD}:/home/kklipsch/$(basename $PWD) kklipsch/devenv:$1; 
-}
