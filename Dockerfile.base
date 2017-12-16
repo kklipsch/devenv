@@ -2,6 +2,7 @@ FROM debian:stable
 
 ENV USER=kklipsch
 ENV HOME /home/$USER
+ENV DEVENV base
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
@@ -21,15 +22,16 @@ ADD scripts/* /usr/local/bin/
 RUN user.sh "$USER" "$HOME"
 
 WORKDIR $HOME
-USER $USER
 
 #variable expansion not supported yet
 ADD bash/* $HOME/
-ADD vim/* $HOME/.vim/
-
-RUN cp $HOME/.vim/base.init $HOME/.vimrc
+ADD vim $HOME/.vim
 
 RUN git.sh
 RUN vim.sh
+
+USER root
+RUN chown -R $USER:$USER $HOME
+USER $USER
 
 ENTRYPOINT ["/bin/bash"]

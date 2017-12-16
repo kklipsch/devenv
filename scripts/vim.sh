@@ -2,5 +2,13 @@
 
 set -eu
 
-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
-sh ./install.sh
+export VIMPACKAGES=$HOME/.vim/pack/$USER
+
+mkdir -p $VIMPACKAGES/start
+mkdir -p $VIMPACKAGES/opt
+
+cp $HOME/.vim/$DEVENV.vimrc $HOME/.vimrc
+
+chmod u+x $HOME/.vim/plugins/*
+$HOME/.vim/plugins/$DEVENV.sh
+
