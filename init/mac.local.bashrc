@@ -1,4 +1,4 @@
-source init/hostrc
+source $HOME/.devenv/hostrc
 
 localmachost() {
 	LOCAL_STATE=${1:-~/.localmachost}
