@@ -9,6 +9,5 @@ mkdir -p $VIMPACKAGES/opt
 
 cp $HOME/.vim/$DEVENV.vimrc $HOME/.vimrc
 
-chmod u+x $HOME/.vim/plugins/*
 $HOME/.vim/plugins/$DEVENV.sh
 
