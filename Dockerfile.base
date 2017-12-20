@@ -29,6 +29,8 @@ ADD vim $HOME/.vim
 
 RUN git.sh
 RUN vim.sh
+RUN mkdir -p $HOME/.ssh && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+
 
 USER root
 RUN chown -R $USER:$USER $HOME
