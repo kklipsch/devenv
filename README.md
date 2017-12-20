@@ -1,14 +1,34 @@
 # devenv - build development environments using only docker
 
-To initialize a host machine to use dev environments:
+## Host machine options
+
+devenv has the concepts:
+- HOSTOS - what operating system the docker host you are setting the devenv up on.
+- LOCATION - local/remote - local is if you are running connecting directly to the host, remote is if you are ssh'ing into it first.
+
+| HOSTOS | LOCATION | DEFAULT |
+| ------ | -------- | ---- |
+| mac | local | X |
+
+
+To initialize a host machine to use the dev environment:
 
 ```
-docker pull kklipsch/devenv:init
-docker rm init
 eval "$(docker run --name init kklipsch/devenv:init)"
-docker rm init
-source ~/.bashrc
 ```
+
+you can override the defaults by:
+```
+export HOSTOS=mac
+export LOCATION=local
+eval "$(docker run --name init kklipsch/devenv:init)"
+```
+
+### A note about mac.local host machines
+
+At the time of this writing Docker for Mac could not share a socket from the host hypervisor to a container nor could it share usb devices from the host to the containers.  This meant that we can't easily support yubikey based ssh keys (ie ssh agent style authorization).
+
+To get around this, the hoaky work around is to start an sshd container, ssh to it forwarding the host agent, capture that socket in that container, and then share that socket via volumes with the dev environment.  Sharing sockets between 2 containers appears to work.  This hoaky work around can cause problems so be aware.
 
 ## Setting up a Macintosh to be a devenv host machine
 
