@@ -33,7 +33,5 @@ esac
 # Use vi mode on the shell
 set -o vi
 
-alias ls='ls -GpF'
-
 # Add a home bin to the path
 PATH=$HOME/bin:$PATH
