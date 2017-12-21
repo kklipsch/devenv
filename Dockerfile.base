@@ -6,7 +6,7 @@ ENV DEVENV base
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
-RUN apt-get -y install apt-utils sudo locales vim git less curl wget
+RUN apt-get -y install apt-utils sudo locales vim git less curl wget gnupg2 apt-transport-https ca-certificates software-properties-common
 
 RUN \
     dpkg-reconfigure -f noninteractive tzdata && \
@@ -27,6 +27,7 @@ ADD vim $HOME/.vim
 
 RUN git.sh
 RUN vim.sh
+RUN docker.sh
 RUN mkdir -p $HOME/.ssh && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
 ENTRYPOINT ["/bin/bash"]
