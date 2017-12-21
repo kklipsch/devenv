@@ -1,5 +1,4 @@
 source $HOME/.devenv/hostrc
-source $HOME/.devenv/macrc
 
 localmachost() {
 	LOCAL_STATE=${1:-~/.localmachost}
@@ -49,5 +48,5 @@ devenv() {
 
 	#load the ssh containers agent and pass it through to devenv
 	AGENT=`cat ${LOCAL_STATE}/agent_socket_path | sed -e 's,/tmp/,,g'`
-	docker run --rm -ti -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock -v ${PWD}:/home/kklipsch/$(basename $PWD) kklipsch/devenv:$TAG; 
+	docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock -v ${PWD}:/root/$(basename $PWD) kklipsch/devenv:$TAG; 
 }
