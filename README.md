@@ -51,4 +51,5 @@ On a personal machine, setup a new Standard User for development.
 - setup 1password / chrome extension
 - add vimium to chrome
 - set iterm2 Preferences/General/Select/Applications in Terminal May access selection
+- set iterm2 Default profile - solarized color theme 
 - set iterm2 Default profile 'send text at start' to be "gpgconf --kill gpg-agent && gpg-agent --enable-ssh-support --daemon /bin/bash"
