@@ -3,10 +3,23 @@ FROM debian:stable
 ENV USER=kklipsch
 ENV HOME /root
 ENV DEVENV base
+ENV SHELL=/bin/bash
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
-RUN apt-get -y install apt-utils sudo locales vim git less curl wget gnupg2 apt-transport-https ca-certificates software-properties-common tmux
+RUN apt-get -y install \
+	apt-utils \
+	locales \
+	vim \
+	git \
+	less \
+	curl \ 
+	wget \
+	gnupg2 \
+	apt-transport-https \
+	ca-certificates \
+	software-properties-common \
+	tmux 
 
 RUN \
     dpkg-reconfigure -f noninteractive tzdata && \
