@@ -22,7 +22,8 @@ ADD scripts/* /usr/local/bin/
 WORKDIR $HOME
 
 #variable expansion not supported yet
-ADD bash/* $HOME/
+ADD bash/bashrc $HOME/.bashrc
+ADD bash/dircolors $HOME/.dircolors
 ADD tmux/tmux.conf $HOME/.tmux.conf
 ADD vim $HOME/.vim
 
