@@ -1,4 +1,5 @@
 source $HOME/.devenv/hostrc
+source $HOME/.devenv/macrc
 
 localmachost() {
 	LOCAL_STATE=${1:-~/.localmachost}
@@ -45,8 +46,16 @@ devenv() {
 	LOCAL_STATE=${2:-~/.localmachost}
 
 	localmachost $LOCAL_STATE
+	
+	#seems to be some delay between file write and it being available
+	sleep 1
 
 	#load the ssh containers agent and pass it through to devenv
 	AGENT=`cat ${LOCAL_STATE}/agent_socket_path | sed -e 's,/tmp/,,g'`
-	docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock -v ${PWD}:/root/$(basename $PWD) kklipsch/devenv:$TAG; 
+	if [ -n "$AGENT" ]; then
+		docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock -v ${PWD}:/root/$(basename $PWD) kklipsch/devenv:$TAG; 
+	else
+		echo "could not get agent path |$AGENT|"
+		return 1
+	fi
 }
