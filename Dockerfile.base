@@ -8,17 +8,12 @@ ENV SHELL=/bin/bash
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
 RUN apt-get -y install \
-	apt-utils \
+	apt-utils locales apt-transport-https ca-certificates software-properties-common\
 	locales \
-	vim \
-	git \
-	less \
-	curl \ 
-	wget \
+	less vim \
+	git tig \
+	curl wget\ 
 	gnupg2 \
-	apt-transport-https \
-	ca-certificates \
-	software-properties-common \
 	tmux 
 
 RUN \
