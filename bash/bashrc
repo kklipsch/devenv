@@ -25,8 +25,9 @@ set -o vi
 eval "$(dircolors $HOME/.dircolors)"
 alias ls='ls --color=auto'
 
-# Add a home bin to the path
-PATH=$HOME/bin:$PATH
-
+if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
+  . /usr/local/etc/hub.bash_completion.sh
+  eval "$(hub alias -s)"
+fi
 
 
