@@ -39,4 +39,4 @@ RUN vim.sh
 RUN docker.sh
 RUN mkdir -p $HOME/.ssh && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["tmux"]
