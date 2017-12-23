@@ -44,6 +44,9 @@ stoplocalmachost() {
 devenv() { 
 	TAG=${1:-base}
 	LOCAL_STATE=${2:-~/.localmachost}
+	
+	DATAVOLUME=${DATAVOLUME:=~/devenv/data}
+	PROJECTVOLUME=${PROJECTVOLUME:=~/devenv/projects}
 
 	localmachost $LOCAL_STATE
 	
@@ -53,7 +56,7 @@ devenv() {
 	#load the ssh containers agent and pass it through to devenv
 	AGENT=`cat ${LOCAL_STATE}/agent_socket_path | sed -e 's,/tmp/,,g'`
 	if [ -n "$AGENT" ]; then
-		docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock -v ${PWD}:/root/$(basename $PWD) kklipsch/devenv:$TAG; 
+		docker run --rm -ti -v $DATAVOLUME:/root/data -v $PROJECTVOLUME:/root/projects -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock kklipsch/devenv:$TAG; 
 	else
 		echo "could not get agent path |$AGENT|"
 		return 1

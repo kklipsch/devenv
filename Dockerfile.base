@@ -39,4 +39,7 @@ RUN vim.sh
 RUN docker.sh
 RUN mkdir -p $HOME/.ssh && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
+VOLUME ["/root/data"]
+VOLUME ["/root/projects"]
+
 CMD ["tmux"]
