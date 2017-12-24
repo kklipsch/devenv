@@ -11,7 +11,6 @@ FROM alpine
 EXPOSE 22
 
 RUN apk update && apk add openssh 
-  #  apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ tini
 
 RUN mkdir /root/.ssh && \
     chmod 700 /root/.ssh && \
@@ -19,8 +18,8 @@ RUN mkdir /root/.ssh && \
 
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
-COPY localmachost/yubikey.pub /root/.ssh/authorized_keys
-COPY localmachost/ssh-find-agent.sh /root/ssh-find-agent.sh
+COPY yubikey.pub /root/.ssh/authorized_keys
+COPY ssh-find-agent.sh /root/ssh-find-agent.sh
 
 VOLUME ["/tmp"]
 
