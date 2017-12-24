@@ -8,5 +8,5 @@ build:
 ifndef DOCKER
 	$(error Must have docker installed)
 else
-	docker build -t kklipsch/devenv:$(i) -f Dockerfile.$(i) . 
+	docker build -t kklipsch/devenv:$(i) $(i) 
 endif
