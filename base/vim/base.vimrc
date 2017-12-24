@@ -1,4 +1,4 @@
-source $HOME/.vim/configs/settings.vimrc 
-source $HOME/.vim/configs/syntastic.vimrc 
-source $HOME/.vim/configs/status.vimrc 
-source $HOME/.vim/configs/colors.vimrc 
+source $HOME/.vim/settings.vimrc 
+source $HOME/.vim/syntastic.vimrc 
+source $HOME/.vim/status.vimrc 
+source $HOME/.vim/colors.vimrc 

@@ -4,6 +4,7 @@ ENV USER=kklipsch
 ENV HOME /root
 ENV DEVENV base
 ENV SHELL=/bin/bash
+ENV VIMPACKAGES=$HOME/.vim/pack/$USER
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
@@ -29,10 +30,14 @@ ADD scripts/* /usr/local/bin/
 WORKDIR $HOME
 
 #variable expansion not supported yet
-ADD bash/bashrc $HOME/.bashrc
-ADD bash/dircolors $HOME/.dircolors
-ADD tmux/tmux.conf $HOME/.tmux.conf
+ADD tmux $HOME/.tmux
+ADD bash $HOME/.bash
 ADD vim $HOME/.vim
+
+RUN rm -f $HOME/.bashrc && ln -s $HOME/.bash/base.sh $HOME/.bashrc
+RUN rm -f $HOME/.vimrc && ln -s $HOME/.vim/base.vimrc $HOME/.vimrc
+RUN ln -s $HOME/.bash/dircolors $HOME/.dircolors
+RUN ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 
 RUN git.sh
 RUN vim.sh
