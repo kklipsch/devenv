@@ -9,6 +9,7 @@ devenv has the concepts:
 | HOSTOS | LOCATION | DEFAULT |
 | ------ | -------- | ---- |
 | mac | local | X |
+| linux | remote | |
 
 
 To initialize a host machine to use the dev environment:
