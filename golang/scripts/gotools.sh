@@ -4,6 +4,7 @@ set -eu
 
 source $HOME/.bash/go.sh
 
+# tools that the vim plugin uses for things
 go get github.com/klauspost/asmfmt/cmd/asmfmt
 go get github.com/kisielk/errcheck
 go get github.com/davidrjenni/reftools/cmd/fillstruct
@@ -20,3 +21,6 @@ go get golang.org/x/tools/cmd/guru
 go get github.com/josharian/impl
 go get github.com/dominikh/go-tools/cmd/keyify
 go get github.com/fatih/motion
+
+# always want dep
+go get -u github.com/golang/dep/cmd/dep
