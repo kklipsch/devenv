@@ -13,6 +13,8 @@ localmachost() {
 	rm -rf ${LOCAL_STATE}
 	mkdir -p ${LOCAL_STATE}
 
+	docker pull ${IMAGE_NAME}
+
 	#start the sshd docker container
 	docker run  --name ${CONTAINER_NAME} \
 	-v ${LOCAL_STATE}:/tmp \
@@ -49,6 +51,8 @@ devenv() {
 	PROJECTVOLUME=${PROJECTVOLUME:=~/devenv/projects}
 
 	localmachost $LOCAL_STATE
+
+	docker pull kklipsch/devenv:$TAG
 	
 	#seems to be some delay between file write and it being available
 	sleep 1
