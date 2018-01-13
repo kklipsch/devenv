@@ -10,7 +10,7 @@ mkdir -p $HOME/devenv
 mkdir -p $HOME/devenv/data
 mkdir -p $HOME/devenv/projects
 
-chown -R $USER:$USER devenv
+chown -R $USER devenv
 
 if [ -f $HOME/.devenv/$HOSTOS.$LOCATION.bashrc ]; then
  	ln -s $HOME/.devenv/$HOSTOS.$LOCATION.bashrc $HOME/.bashrc	
