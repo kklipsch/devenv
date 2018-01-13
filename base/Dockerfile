@@ -2,7 +2,7 @@ FROM debian:stable
 
 ENV USER=kklipsch
 ENV HOME /root
-ENV DEVENV base
+ENV DEVENV set-DEVENV-variable
 ENV SHELL=/bin/bash
 ENV VIMPACKAGES=$HOME/.vim/pack/$USER
 

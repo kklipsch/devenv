@@ -60,7 +60,7 @@ devenv() {
 	#load the ssh containers agent and pass it through to devenv
 	AGENT=`cat ${LOCAL_STATE}/agent_socket_path | sed -e 's,/tmp/,,g'`
 	if [ -n "$AGENT" ]; then
-		docker run --rm -ti -v $DATAVOLUME:/root/data -v $PROJECTVOLUME:/root/projects -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock kklipsch/devenv:$TAG; 
+		docker run --rm -ti -e DEVENV=$TAG -v $DATAVOLUME:/root/data -v $PROJECTVOLUME:/root/projects -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock kklipsch/devenv:$TAG; 
 	else
 		echo "could not get agent path |$AGENT|"
 		return 1
