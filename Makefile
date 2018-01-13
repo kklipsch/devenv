@@ -3,6 +3,11 @@ DOCKER := $(shell command -v docker)
 
 i ?= base
 
+.PHONY: usage
+usage:
+	@echo usage:
+	@echo make build i=golang
+
 .PHONY: build
 build:
 ifndef DOCKER
