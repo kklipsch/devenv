@@ -15,14 +15,14 @@ devenv has the concepts:
 To initialize a host machine to use the dev environment:
 
 ```
-eval "$(docker run --name init kklipsch/devenv:init)"
+docker pull kklipsch/devenv:init && eval "$(docker run --name init kklipsch/devenv:init)"
 ```
 
 you can override the defaults by:
 ```
 export HOSTOS=mac
 export LOCATION=local
-eval "$(docker run --name init kklipsch/devenv:init)"
+docker pull kklipsch/devenv:init && eval "$(docker run --name init kklipsch/devenv:init)"
 ```
 
 ### A note about mac.local host machines
