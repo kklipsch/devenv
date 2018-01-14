@@ -29,10 +29,10 @@ ADD scripts/* /usr/local/bin/
 
 WORKDIR $HOME
 
-#variable expansion not supported yet
 ADD tmux $HOME/.tmux
 ADD bash $HOME/.bash
 ADD vim $HOME/.vim
+ADD ssh $HOME/.ssh
 
 RUN rm -f $HOME/.bashrc && ln -s $HOME/.bash/base.sh $HOME/.bashrc
 RUN rm -f $HOME/.vimrc && ln -s $HOME/.vim/base.vimrc $HOME/.vimrc
@@ -42,7 +42,7 @@ RUN ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 RUN git.sh
 RUN vim.sh
 RUN docker.sh
-RUN mkdir -p $HOME/.ssh && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
 VOLUME ["/root/data"]
 VOLUME ["/root/projects"]
