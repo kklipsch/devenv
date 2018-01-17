@@ -1,6 +1,8 @@
 source $HOME/.devenv/hostrc
 source $HOME/.devenv/macrc
 
+export LOCATION=local
+
 localmachost() {
 	LOCAL_STATE=${1:-~/.localmachost}
 	

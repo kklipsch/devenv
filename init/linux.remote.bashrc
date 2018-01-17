@@ -1,6 +1,8 @@
 source $HOME/.devenv/hostrc
 source $HOME/.devenv/linuxrc
 
+export LOCATION=remote
+
 devenv() { 
 	TAG=${1:-base}
 	

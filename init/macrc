@@ -3,3 +3,5 @@ alias ls='ls -GpF'
 
 # gives ls a 'solarized' look
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+export HOSTOS=mac
