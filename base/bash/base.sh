@@ -25,6 +25,10 @@ set -o vi
 eval "$(dircolors $HOME/.dircolors)"
 alias ls='ls --color=auto'
 
+if [ -f /etc/bash_completion.d/git ]; then
+  . /etc/bash_completion.d/git ]
+fi
+
 if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
   . /usr/local/etc/hub.bash_completion.sh
   eval "$(hub alias -s)"
