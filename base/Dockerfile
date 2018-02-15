@@ -14,6 +14,7 @@ RUN apt-get -y install \
 	git tig mercurial \
 	curl wget\ 
 	gnupg2 \
+	jq \
 	tmux 
 
 RUN \
