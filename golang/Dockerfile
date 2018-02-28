@@ -1,8 +1,5 @@
 FROM kklipsch/devenv:base 
 
-#non-inline go src
-VOLUME ["/root/src"]
-
 ADD scripts/* /usr/local/bin/
 ADD bash $HOME/.bash
 ADD vim $HOME/.vim
