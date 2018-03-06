@@ -43,6 +43,7 @@ RUN ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 RUN git.sh
 RUN vim.sh
 RUN docker.sh
+RUN op.sh
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
 VOLUME ["/root/data"]
