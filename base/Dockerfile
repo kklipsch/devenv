@@ -46,7 +46,4 @@ RUN docker.sh
 RUN op.sh
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-VOLUME ["/root/data"]
-VOLUME ["/root/projects"]
-
 CMD ["tmux"]
