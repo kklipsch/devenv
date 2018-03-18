@@ -52,9 +52,12 @@ devenv() {
 	DATAVOLUME=${DATAVOLUME:=~/devenv/data}
 	PROJECTVOLUME=${PROJECTVOLUME:=~/devenv/projects}
 
+	IMAGE_NAME=kklipsch/devenv:$TAG
+	CONTAINER_NAME=devenv-$TAG
+
 	localmachost $LOCAL_STATE
 
-	docker pull kklipsch/devenv:$TAG
+	docker pull $IMAGE_NAME 
 	
 	#seems to be some delay between file write and it being available
 	sleep 1
@@ -62,7 +65,7 @@ devenv() {
 	#load the ssh containers agent and pass it through to devenv
 	AGENT=`cat ${LOCAL_STATE}/agent_socket_path | sed -e 's,/tmp/,,g'`
 	if [ -n "$AGENT" ]; then
-		docker run --rm -ti -e DEVENV=$TAG -v $DATAVOLUME:/root/data -v $PROJECTVOLUME:/root/projects -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock kklipsch/devenv:$TAG; 
+		docker run --rm -ti -e DEVENV=$TAG -v $DATAVOLUME:/root/data -v $PROJECTVOLUME:/root/projects -v /var/run/docker.sock:/var/run/docker.sock -v ${LOCAL_STATE}/$AGENT:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock --name $CONTAINER_NAME $IMAGE_NAME; 
 	else
 		echo "could not get agent path |$AGENT|"
 		return 1
