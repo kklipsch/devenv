@@ -49,12 +49,11 @@ devenv() {
 	TAG=${1:-base}
 	LOCAL_STATE=${2:-~/.localmachost}
 	
-	DEVENV_VOLUME=${DEVENV_VOLUME:=~/devenv}
+	localmachost $LOCAL_STATE
 
+	DEVENV_VOLUME=${DEVENV_VOLUME:=~/devenv}
 	IMAGE_NAME=kklipsch/devenv:$TAG
 	CONTAINER_NAME=devenv-$TAG
-
-	localmachost $LOCAL_STATE
 
 	docker pull $IMAGE_NAME 
 	
