@@ -46,4 +46,4 @@ RUN docker.sh
 RUN op.sh
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-CMD bash -C '/usr/local/bin/link.sh';'tmux'
+ENTRYPOINT /usr/local/bin/link.sh && tmux
