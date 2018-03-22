@@ -5,6 +5,7 @@ export LOCATION=remote
 
 devenv() { 
 	TAG=${1:-base}
+	OPSOURCE=$2
 	
 	DEVENV_VOLUME=${DEVENV_VOLUME:=~/devenv}
 
@@ -13,5 +14,5 @@ devenv() {
 
 	docker pull $IMAGE_NAME 
 
-	docker run --rm -ti -e DEVENT=$TAG -e DEVENV_VOLUME=$DEVENV_VOLUME -v $DEVENV_VOLUME:$DEVENV_VOLUME -v /var/run/docker.sock:/var/run/docker.sock -v $SSH_AUTH_SOCK:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock --name $CONTAINER_NAME $IMAGE_NAME; 
+	docker run --rm -ti -e OPSOURCE=$OPSOURCE -e DEVENT=$TAG -e DEVENV_VOLUME=$DEVENV_VOLUME -v $DEVENV_VOLUME:$DEVENV_VOLUME -v /var/run/docker.sock:/var/run/docker.sock -v $SSH_AUTH_SOCK:/tmp/ssh-agent.sock --env SSH_AUTH_SOCK=/tmp/ssh-agent.sock --name $CONTAINER_NAME $IMAGE_NAME; 
 }

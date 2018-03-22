@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eu
-
 source $HOME/.bash/go.sh
 
 # tools that the vim plugin uses for things
