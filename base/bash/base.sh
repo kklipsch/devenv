@@ -35,7 +35,3 @@ if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
 fi
 
 source $HOME/.bash/op.sh
-
-if [ -n "$OPSOURCE" ]; then 
-	opsource $OPSOURCE
-fi
