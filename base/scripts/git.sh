@@ -12,3 +12,6 @@ curl -sL https://github.com/github/hub/releases/download/v2.2.8/hub-linux-amd64-
 /tmp/hub-linux-amd64-2.2.8/install 
 cp /tmp/hub-linux-amd64-2.2.8/etc/* /usr/local/etc
 rm /tmp/hub-linux-amd64-2.2.8/install 
+
+#hub store things in ~/.config put that in the data directory for safekeeping
+ln -s /root/data/config $HOME/.config

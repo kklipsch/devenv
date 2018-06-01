@@ -26,7 +26,7 @@ eval "$(dircolors $HOME/.dircolors)"
 alias ls='ls --color=auto'
 
 if [ -f /etc/bash_completion.d/git ]; then
-  . /etc/bash_completion.d/git ]
+  . /etc/bash_completion.d/git 
 fi
 
 if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
@@ -34,4 +34,5 @@ if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
   eval "$(hub alias -s)"
 fi
 
-
+source $HOME/.bash/op.sh
+source $HOME/.bash/aws.sh

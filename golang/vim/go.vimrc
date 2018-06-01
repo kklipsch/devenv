@@ -20,4 +20,7 @@ let g:go_highlight_structs = 1
 let g:go_fmt_command = "goimports"
 
 " Syntastic with go
-let g:syntastic_go_checkers = ['go', 'gotype', 'govet', 'golint', 'deadcode']
+let g:syntastic_go_checkers = ['govet', 'golint', 'gometalinter']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+let g:go_list_type = "quickfix"

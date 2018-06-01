@@ -10,10 +10,11 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get update
 RUN apt-get -y install \
 	apt-utils locales apt-transport-https ca-certificates software-properties-common\
-	man-db less vim silversearcher-ag \
+	man-db less vim silversearcher-ag zip unzip \
 	git tig mercurial \
 	curl wget\ 
 	gnupg2 \
+	jq \
 	tmux 
 
 RUN \
@@ -42,9 +43,7 @@ RUN ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 RUN git.sh
 RUN vim.sh
 RUN docker.sh
+RUN op.sh
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-VOLUME ["/root/data"]
-VOLUME ["/root/projects"]
-
-CMD ["tmux"]
+ENTRYPOINT /usr/local/bin/link.sh && tmux
