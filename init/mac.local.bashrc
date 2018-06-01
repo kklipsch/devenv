@@ -1,5 +1,6 @@
 source $HOME/.devenv/hostrc
 source $HOME/.devenv/macrc
+source $HOME/.devenv/localrc
 
 export LOCATION=local
 
