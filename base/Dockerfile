@@ -1,10 +1,15 @@
 FROM debian:stable
 
 ENV USER=kklipsch
-ENV HOME /root
+ENV HOME /home
 ENV DEVENV set-DEVENV-variable
 ENV SHELL=/bin/bash
 ENV VIMPACKAGES=$HOME/.vim/pack/$USER
+
+# this volume is for storing session state on the host, things like docker creditions, aws configs etc
+VOLUME /state
+
+# note that the host script will also load the host wd as a volume
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
@@ -36,6 +41,8 @@ ADD vim $HOME/.vim
 ADD ssh $HOME/.ssh
 
 RUN rm -f $HOME/.bashrc && ln -s $HOME/.bash/base.sh $HOME/.bashrc
+#tmux seems to prefer profile
+RUN rm -f $HOME/.profile && ln -s $HOME/.bash/base.sh $HOME/.profile
 RUN rm -f $HOME/.vimrc && ln -s $HOME/.vim/base.vimrc $HOME/.vimrc
 RUN ln -s $HOME/.bash/dircolors $HOME/.dircolors
 RUN ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
@@ -46,4 +53,4 @@ RUN docker.sh
 RUN op.sh
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-ENTRYPOINT /usr/local/bin/link.sh && tmux
+ENTRYPOINT (cd $DEVENV_VOLUME; tmux)

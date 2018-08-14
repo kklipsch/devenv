@@ -12,5 +12,4 @@ rm op.sig
 rm op_linux_amd64_$OP_VERSION.zip
 
 #op stores sessions in ~/.op store that on the host 
-mkdir -p /root/data/op
-ln -s /root/data/op $HOME/.op
+ln -s /state/op $HOME/.op

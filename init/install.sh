@@ -6,9 +6,7 @@ HOSTOS=${HOSTOS:-mac}
 LOCATION=${LOCATION:-local}
 
 rm -f $HOME/.bashrc
-mkdir -p $HOME/devenv
-mkdir -p $HOME/devenv/data
-mkdir -p $HOME/devenv/projects
+mkdir -p $HOME/devenv/state
 
 chown -R $USER devenv
 
