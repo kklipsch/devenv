@@ -34,5 +34,7 @@ if [ -f /usr/local/etc/hub.bash_completion.sh ]; then
   eval "$(hub alias -s)"
 fi
 
+alias devv='cd $DEVENV_VOLUME'
+
 source $HOME/.bash/op.sh
 source $HOME/.bash/aws.sh
