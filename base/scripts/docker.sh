@@ -11,8 +11,9 @@ apt-get autoremove -y
 apt-get autoclean -y
 
 
-#docker stores things in ~/.docker put that in the state volume for safekeeping
-ln -s /state/docker $HOME/.docker
+#docker stores things in ~/.docker put that in the data directory for safekeeping
+mkdir -p /root/data/docker
+ln -s /root/data/docker $HOME/.docker
 
 # install docker compose
 curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
