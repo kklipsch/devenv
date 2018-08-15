@@ -12,7 +12,6 @@ apt-get autoclean -y
 
 
 #docker stores things in ~/.docker put that in the data directory for safekeeping
-mkdir -p /root/data/docker
 ln -s /root/data/docker $HOME/.docker
 
 # install docker compose
