@@ -2,7 +2,7 @@
 
 set -eu
 
-OP_VERSION=v0.5
+OP_VERSION=v0.5.4
 
 # install and verify op cli
 wget https://cache.agilebits.com/dist/1P/op/pkg/$OP_VERSION/op_linux_amd64_$OP_VERSION.zip
