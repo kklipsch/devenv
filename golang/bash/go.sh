@@ -9,3 +9,6 @@ export GOPATH=$HOME/go-external:$HOME/projects/go
 
 #dont search vendor files in golang projects
 alias ag='ag --ignore vendor'
+
+#golang, especially go mod seems to need this for private repos
+git config --global url.ssh://git@github.com.insteadof https://github.com
