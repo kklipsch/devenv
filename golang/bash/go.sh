@@ -11,4 +11,4 @@ export GOPATH=$HOME/go-external:$HOME/projects/go
 alias ag='ag --ignore vendor'
 
 #golang, especially go mod seems to need this for private repos
-git config --global url.ssh://git@github.com.insteadof https://github.com
+alias gitfix='git config --local url.ssh://git@github.com.insteadof https://github.com'
