@@ -13,12 +13,13 @@ EXPOSE 22
 RUN apk update && apk add openssh 
 
 RUN mkdir /root/.ssh && \
-    chmod 700 /root/.ssh && \
+    chmod 755 /root/.ssh && \
     ssh-keygen -A
 
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 COPY yubikey.pub /root/.ssh/authorized_keys
+RUN chmod 644 /root/.ssh/authorized_keys
 COPY ssh-find-agent.sh /root/ssh-find-agent.sh
 
 VOLUME ["/tmp"]
