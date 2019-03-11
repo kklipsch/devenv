@@ -1,0 +1,11 @@
+Port 22
+ListenAddress 0.0.0.0
+PubkeyAuthentication yes
+AuthorizedKeysFile      /root/.ssh/authorized_keys
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+AllowAgentForwarding yes
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no

@@ -10,7 +10,7 @@ FROM alpine
 
 EXPOSE 22
 
-RUN apk update && apk add openssh 
+RUN apk add --update --no-cache shadow openssh 
 
 RUN mkdir /root/.ssh && \
     chmod 755 /root/.ssh && \
@@ -20,8 +20,13 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 COPY yubikey.pub /root/.ssh/authorized_keys
 RUN chmod 644 /root/.ssh/authorized_keys
+
 COPY ssh-find-agent.sh /root/ssh-find-agent.sh
+COPY sshd_config /etc/ssh/sshd_config
+
+RUN usermod -p "*" root 
+RUN apk del shadow
+
 
 VOLUME ["/tmp"]
-
-CMD ["/usr/sbin/sshd","-D"]
+CMD ["/usr/sbin/sshd","-D", "-e"]
