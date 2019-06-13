@@ -17,3 +17,9 @@ function opsource() {
 	source $sourced
 	rm $sourced
 }
+
+func opssh() {
+
+	op get document op_ssh > ~/.ssh/id_rsa
+	chmod 0600 ~/.ssh/id_rsa
+}
