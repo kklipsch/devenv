@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:buster
 
 ENV USER=kklipsch
 ENV HOME /root
