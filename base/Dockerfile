@@ -10,7 +10,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get update
 RUN apt-get -y install \
 	apt-utils locales apt-transport-https ca-certificates software-properties-common\
-	dnsutils man-db less vim silversearcher-ag zip unzip \
+	dnsutils man-db less vim silversearcher-ag fzf zip unzip \
 	git tig mercurial \
 	curl wget\ 
 	gnupg2 \
