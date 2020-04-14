@@ -12,4 +12,5 @@ rm op.sig
 rm op_linux_amd64_$OP_VERSION.zip
 
 #op stores sessions in ~/.op store that on the host 
-ln -s /root/data/op $HOME/.op
+# this stopped working but it means that each session requires the bad signin
+#ln -s /root/data/op $HOME/.op
